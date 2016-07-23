@@ -14,7 +14,7 @@ ruby scraper.rb
 
 ## API base URL
 
-The API's base URL is `http://www.infogo.gov.on.ca/infogo/v1`
+The base URL is `http://www.infogo.gov.on.ca/infogo/v1`
 
 Quirks:
 
@@ -189,12 +189,12 @@ Quirks:
 
 * `individualId` can be nil.
 
-### GET `http://www.infogo.gov.on.ca/infogo/v1/organizations/search?&keywords=<keywords>&topOrgId=<id>&locale=<locale>`
+### GET `/organizations/search?&keywords=<keywords>&topOrgId=<id>&locale=<locale>`
 
 Returns matching organizations.
 
-* `topOrgId` is any organization with `"topLevel": true`.
-* `locale` is either `en` or `fr`.
+* `topOrgId` is any organization with `"topLevel": true`
+* `locale` is either `en` or `fr`
 
 ```json
 {
@@ -227,12 +227,12 @@ Returns matching organizations.
 
 Strings are null if empty.
 
-### GET `http://www.infogo.gov.on.ca/infogo/v1/individuals/search?&keywords=<keywords>&topOrgId=<id>&locale=<locale>`
+### GET `/individuals/search?&keywords=<keywords>&topOrgId=<id>&locale=<locale>`
 
 Returns matching individuals.
 
-* `topOrgId` is any organization with `"topLevel": true`.
-* `locale` is either `en` or `fr`.
+* `topOrgId` is any organization with `"topLevel": true`
+* `locale` is either `en` or `fr`
 
 ```json
 {
