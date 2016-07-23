@@ -2,12 +2,6 @@
 
 [INFO-GO](http://www.infogo.gov.on.ca/infogo/) is the Government of Ontario Employee and Organization Directory.
 
-The base URL is `http://www.infogo.gov.on.ca/infogo/v1`
-
-Quirks:
-
-* The response has `Content-Type: text/plain;charset=ISO-8859-1`. You may have expected `Content-Type: application/json;charset=UTF-8`.
-
 ## Scraper
 
 The following commands write one JSON file per organization and person to `organizations` (7,000+) and `people` (40,000+) directories.
@@ -18,7 +12,15 @@ bundle
 ruby scraper.rb
 ````
 
-## Endpoints
+## API base URL
+
+The API's base URL is `http://www.infogo.gov.on.ca/infogo/v1`
+
+Quirks:
+
+* The response has `Content-Type: text/plain;charset=ISO-8859-1`. You may have expected `Content-Type: application/json;charset=UTF-8`.
+
+## API endpoints
 
 ### GET `/organizations/top`
 
@@ -264,7 +266,7 @@ Returns matching individuals.
 
 Strings are null if empty.
 
-## Schemas
+## Common schemas
 
 ### Address
 
