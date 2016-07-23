@@ -4,7 +4,7 @@
 
 ## Scraper
 
-The following commands write one JSON file per organization and person to `organizations` (7,000+) and `people` (40,000+) directories.
+Write one JSON file per organization and person to `organizations` (7,000+) and `people` (40,000+) directories:
 
 ```
 mkdir organizations people
