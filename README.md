@@ -1,10 +1,14 @@
-# INFO-GO API
+# INFO-GO API documentation and scraper
+
+[INFO-GO](http://www.infogo.gov.on.ca/infogo/) is the Government of Ontario Employee and Organization Directory.
 
 The base URL is `http://www.infogo.gov.on.ca/infogo/v1`
 
-The response has `Content-Type: text/plain;charset=ISO-8859-1`
+Quirks:
 
-## Download
+* The response has `Content-Type: text/plain;charset=ISO-8859-1`. You may have expected `Content-Type: application/json;charset=UTF-8`.
+
+## Scraper
 
 The following commands write one JSON file per organization and person to `organizations` (7,000+) and `people` (40,000+) directories.
 
