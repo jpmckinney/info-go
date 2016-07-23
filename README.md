@@ -332,3 +332,5 @@ Strings are null if empty.
   "labelFr": ""
 }
 ```
+
+Copyright (c) 2016 James McKinney, released under the MIT license
