@@ -7,12 +7,13 @@
 Writes one JSON file per organization and person to `organizations` (7,000+) and `people` (40,000+) directories:
 
 ```
-mkdir organizations people
 bundle
 ruby scraper.rb
 ```
 
 INFO-GO changes daily, so I'm not currently distributing the scraper's output.
+
+Requires Ruby 2.3 for `Hash#dig`.
 
 ## API base URL
 
