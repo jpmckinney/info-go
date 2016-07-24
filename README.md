@@ -4,13 +4,15 @@
 
 ## Scraper
 
-Write one JSON file per organization and person to `organizations` (7,000+) and `people` (40,000+) directories:
+Writes one JSON file per organization and person to `organizations` (7,000+) and `people` (40,000+) directories:
 
 ```
 mkdir organizations people
 bundle
 ruby scraper.rb
-````
+```
+
+INFO-GO changes daily, so I'm not currently distributing the scraper's output.
 
 ## API base URL
 
@@ -19,33 +21,11 @@ The base URL is `http://www.infogo.gov.on.ca/infogo/v1`
 Quirks:
 
 * The response has `Content-Type: text/plain;charset=ISO-8859-1`. You may have expected `Content-Type: application/json;charset=UTF-8`.
+* The identifiers for people (`assignmentId`) are unstable.
 
 ## API endpoints
 
-### GET `/organizations/top`
-
-Returns a subset of the root organizations, to display in a dropdown.
-
-```json
-{
-  "organizations": [{
-    "description": "",
-    "descriptionFrench": "",
-    "id": 0,
-    "name": "",
-    "nameFrench": "",
-    "nameFrenchNorm": "",
-    "nameNorm": "",
-    "typeId": 0,
-    "typeName": ""
-  }]
-}
-```
-
-Quirks:
-
-* `id` can be a string.
-* The entries for `All Organizations`, `Agencies` and `Universities and Community Colleges` have only the keys `id`, `name` and `nameFrench`.
+For brevity, I refer to [common schemas](#common-schemas) in the sample output of API endpoints.
 
 ### GET `/organizations/categories`
 
@@ -73,6 +53,10 @@ Returns the root organizations.
   }]
 }
 ```
+
+Relations:
+
+* Use `categories[].organizations[].id` in `/organizations/get?orgId=<id>`
 
 ### GET `/organizations/get?orgId=<id>`
 
@@ -142,6 +126,16 @@ Returns one organization.
   "indirectPositions": []
 }
 ```
+
+Direct relations:
+
+* Use `childOrgs[].orgId` in `/organizations/get?orgId=<id>`
+* Use `childOrgs[].head.assignmentId` in `/individuals/get?assignmentId=<id>`
+* Use `positions[].assignmentId` in `/individuals/get?assignmentId=<id>`
+
+Quirks:
+
+* The record for the identifier `childOrgs[].head.assignmentId` sometimes doesn't exist.
 
 ### GET `/individuals/get?assignmentId=<id>`
 
@@ -265,6 +259,31 @@ Returns matching individuals.
 ```
 
 Strings are null if empty.
+
+### GET `/organizations/top`
+
+Returns a subset of the root organizations, to display in a dropdown.
+
+```json
+{
+  "organizations": [{
+    "description": "",
+    "descriptionFrench": "",
+    "id": 0,
+    "name": "",
+    "nameFrench": "",
+    "nameFrenchNorm": "",
+    "nameNorm": "",
+    "typeId": 0,
+    "typeName": ""
+  }]
+}
+```
+
+Quirks:
+
+* `id` can be a string.
+* The entries for `All Organizations`, `Agencies` and `Universities and Community Colleges` have only the keys `id`, `name` and `nameFrench`.
 
 ## Common schemas
 
