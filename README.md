@@ -261,6 +261,10 @@ Returns matching individuals.
 
 Strings are null if empty.
 
+Quirks:
+
+* The key is `honorifics` here but `honorific` in `/individuals/get?assignmentId=<id>`
+
 ### GET `/organizations/top`
 
 Returns a subset of the root organizations, to display in a dropdown.
